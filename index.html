@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* CSS BAŞLANGICI: YENİ RENKLER VE HAMBURGER MENÜ AYARI */
+        /* CSS BAŞLANGICI: YENİ TASARIMA UYARLAMA */
         
         :root {
-            --primary-color: #007bff; /* Önceki Mavi Renge Dönüş */
-            --secondary-color: #343a40; /* Koyu Gri */
-            --accent-color: #ffc107; /* Sarı */
-            --light-bg: #f8f9fa;
+            /* Mavi, Koyu Gri ve Sarı Ana Renkler Korundu */
+            --primary-color: #007bff; 
+            --secondary-color: #343a40;
+            --accent-color: #ffc107;
+            --light-bg: #f8f9fa; /* Açık Gri Zemin */
             --text-color: #333;
             --font-family: 'Arial', sans-serif;
+            --card-bg: #fff;
         }
 
         * {
@@ -32,13 +34,13 @@
             background-color: #fff;
         }
         
-        /* HEADER VE NAVİGASYON */
+        /* HEADER VE NAVİGASYON - GÖRSELDEKİ SİYAH TEMA */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
-            background-color: var(--secondary-color);
+            background-color: var(--secondary-color); /* Siyah/Koyu Gri */
             color: white;
             position: sticky;
             top: 0;
@@ -49,12 +51,26 @@
         .logo {
             font-size: 1.6em;
             font-weight: bold;
-            color: var(--accent-color);
+            color: var(--accent-color); /* Sarı Logo */
         }
         
-        /* Büyük Ekran Navigasyonu Gizlendi (Hamburger Menü Her Yerde Çıkacak) */
+        /* Hamburger İkonu - Her Yerde Gösterilecek (Görselde sol üstte) */
+        .menu-toggle {
+            display: block; 
+            font-size: 1.8em;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Navigasyon sağda, dil seçici ve menü toggle solda olacak şekilde düzenleme */
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Menü ve logo aralığı */
+        }
+
         .navbar nav {
-            display: none;
+            display: none; /* Büyük ekran nav. menüsü tamamen gizlendi */
         }
 
         .lang-selector button {
@@ -62,26 +78,13 @@
             color: white;
             border: none;
             padding: 6px 12px;
-            margin-left: 8px;
             cursor: pointer;
             border-radius: 5px;
             font-weight: bold;
             transition: background 0.3s;
         }
+        .lang-selector button:hover { background: #0056b3; }
 
-        .lang-selector button:hover {
-            background: #0056b3; /* Mavi hover */
-        }
-
-        /* Hambuger İkonu - Her Yerde Gösterilecek */
-        .menu-toggle {
-            display: block; 
-            font-size: 1.8em;
-            cursor: pointer;
-            color: white;
-            margin-right: 15px; /* Logodan ayırmak için */
-        }
-        
         /* Mobil Navigasyon (Sidebar) */
         .sidebar {
             height: 100%;
@@ -96,7 +99,6 @@
             padding-top: 60px;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
         }
-
         .sidebar a {
             padding: 15px 25px;
             text-decoration: none;
@@ -106,12 +108,10 @@
             transition: 0.3s;
             border-bottom: 1px solid #495057;
         }
-
         .sidebar a:hover {
             color: var(--accent-color);
             background-color: #495057;
         }
-
         .sidebar .close-btn {
             position: absolute;
             top: 0;
@@ -126,10 +126,11 @@
         .section {
             padding: 80px 5%; 
             text-align: center;
+            background-color: var(--light-bg); /* Hafif Açık Gri */
         }
 
         .section:nth-child(even) {
-            background-color: var(--light-bg);
+            background-color: #fff; /* Beyaz Zemin */
         }
 
         h2 {
@@ -142,9 +143,11 @@
             font-weight: bold;
         }
 
-        /* Hero Bölümü: ARKA PLAN GÖRSELİ BURADA DEĞİŞTİ! */
+        /* Hero Bölümü: YENİ GÖRSEL VE TASARIM */
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542435503-96cb3e0a2d59?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            /* Görseldeki teknik devre temalı arka plan */
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1596707328766-fa3d96924376?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
             height: 80vh; 
             display: flex;
             flex-direction: column;
@@ -153,11 +156,16 @@
             color: white;
             text-shadow: 2px 2px 5px #000;
         }
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
 
         .hero-section h1 {
             font-size: 4.5em;
             margin-bottom: 20px;
             text-transform: uppercase;
+            line-height: 1.1;
         }
 
         .hero-section p {
@@ -166,8 +174,8 @@
         }
 
         .btn {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--accent-color); /* Sarı */
+            color: var(--text-color);
             padding: 15px 40px;
             text-decoration: none;
             border-radius: 50px;
@@ -180,11 +188,11 @@
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #e0ac00; /* Koyu Sarı */
             transform: translateY(-3px) scale(1.05);
         }
         
-        /* Genel Kart Stilleri */
+        /* Genel Kart Stilleri - Görseldeki Sade Stile Dönüş */
         .service-list, .product-grid, .reason-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -193,41 +201,43 @@
         }
 
         .card-item {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.4s, box-shadow 0.4s;
-            border-top: 5px solid var(--primary-color);
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #ddd; /* Hafif sınır */
             text-align: center;
+            height: 100%; /* Grid içinde eşit yükseklik */
         }
 
         .card-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* Hizmet/Sebep Kart İkonları */
         .card-item i {
             font-size: 3.5em;
             color: var(--primary-color);
             margin-bottom: 20px;
         }
         
-        /* Ürün Kartları Görsel İyileştirme */
-        .product-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 8px 8px 0 0;
-            border-bottom: 3px solid var(--accent-color);
-        }
-
+        /* Ürün Kartları - Görselin ana fotoğrafı burada yer alacak */
         .product-card {
-             padding: 0;
-             overflow: hidden;
+            padding: 0;
+            overflow: hidden;
+            border-top: 5px solid var(--accent-color); /* Üst sarı çizgi */
         }
         
-        .product-card h3, .product-card p, .product-card button {
+        .product-card img {
+            width: 100%;
+            height: 200px; /* Daha az yer kaplaması için küçültüldü */
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .product-card h3, .product-card p {
             padding: 0 20px;
             text-align: center;
         }
@@ -239,29 +249,44 @@
             margin-bottom: 20px;
             padding: 10px 20px;
             font-size: 0.9em;
+            background-color: var(--primary-color); /* Mavi butona dönüş */
+            color: white;
+            border-radius: 5px;
         }
-
+        .view-gallery-btn:hover {
+            background-color: #0056b3;
+            transform: none;
+        }
+        
         /* İletişim */
         .contact-section {
             background-color: var(--secondary-color);
             color: white;
+            padding: 60px 5%;
         }
 
         .contact-info {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center; /* Ortalanmış iletişim bilgileri */
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
         }
 
-        /* Footer - Temizlendi */
-        .footer-info-group {
-            display: none; /* Harita ve numara grupları kaldırıldı */
+        .contact-info p {
+            font-size: 1.1em;
+            margin: 10px 0;
         }
         
-        /* Sabit İkonlar - Sadece İletişim ve Harita İkonları Kaldı */
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9em;
+        }
+        
+        /* Sabit İletişim İkonları */
         .floating-contact {
             position: fixed;
             right: 20px;
@@ -285,15 +310,12 @@
             transition: transform 0.3s;
         }
         
-        .contact-icon:hover {
-            transform: scale(1.15) rotate(5deg);
-        }
-        
+        .contact-icon:hover { transform: scale(1.15) rotate(5deg); }
         .whatsapp { background-color: #25D366; }
         .phone { background-color: var(--primary-color); }
         .map { background-color: var(--accent-color); }
 
-        /* MODAL GALERİ STİLLERİ (Değişmedi) */
+        /* MODAL GALERİ STİLLERİ (Aynen kaldı) */
         .modal {
             display: none; 
             position: fixed; 
@@ -330,14 +352,12 @@
     </div>
 
     <header class="navbar">
-        <div style="display: flex; align-items: center;">
+        <div class="navbar-left">
             <div class="menu-toggle" onclick="openNav()">
                 <i class="fas fa-bars"></i>
             </div>
-            <div class="logo" data-key="logo_text">Kapsamlı Teknik Servis</div>
+            <div class="logo" data-key="logo_text">Namık Servis</div>
         </div>
-        
-        <nav></nav>
         
         <div class="lang-selector">
             <button onclick="changeLanguage('az')">AZ</button>
@@ -347,9 +367,12 @@
     </header>
 
     <section id="hero" class="hero-section">
-        <h1 data-key="hero_heading">Uzman Teknik Servis Çözümleri</h1>
-        <p data-key="hero_subheading">Uydu Kurulumundan Yazılım Onarımına, Güvenlik Çözümlerine Kadar Hepsi Tek Adreste.</p>
-        <a href="#contact" class="btn" data-key="contact_us_btn">Bize Ulaşın</a> </section>
+        <div class="hero-content">
+            <h1 data-key="hero_heading">Uzman Teknik Servis Çözümleri</h1>
+            <p data-key="hero_subheading">Uydu Kurulumundan Yazılım Onarımına, Güvenlik Çözümlerine Kadar Hepsi Tek Adreste.</p>
+            <a href="#contact" class="btn" data-key="contact_us_btn" style="background-color: var(--accent-color);">Bize Ulaşın</a>
+        </div>
+    </section>
 
     <section id="satellite" class="section">
         <h2 data-key="satellite_heading">Uydu Sistemleri ve Hizmetleri</h2>
@@ -376,7 +399,7 @@
         <div class="product-grid">
 
             <div class="product-card card-item" data-product="single_lnb">
-                <img src="https://api-rayashop.freetls.fastly.net/media/catalog/product/cache/4e49ac3a70c0b98a165f3fa6633ffee1/k/i/kilz6s6_-_imgur.jpg?format=webp&width=700" alt="Tek Çıkışlı LNB">
+                <img src="https://images.unsplash.com/photo-1549488344-90f19a0e6981?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Tek Çıkışlı LNB">
                 <h3 data-key="prod1_name">Tek Çıkışlı LNB</h3>
                 <p data-key="prod1_desc">Yüksek performanslı, tek uydu alıcısı için ideal LNB.</p>
                 <button class="btn view-gallery-btn" data-key="view_gallery_btn">Görselleri Görüntüle</button>
@@ -426,12 +449,12 @@
                 <p data-key="cam1_desc">İç ve dış mekanlar için şık ve dayanıklı dome güvenlik kamerası.</p>
             </div>
             <div class="product-card card-item" data-product="camera2">
-                <img src="https://images.unsplash.com/photo-1577764951478-f7b578c90393?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bullet Kamera">
+                 <img src="https://images.unsplash.com/photo-1577764951478-f7b578c90393?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bullet Kamera">
                 <h3 data-key="cam2_name">Bullet Kamera</h3>
                 <p data-key="cam2_desc">Dış mekan ve uzun mesafeli gözetim için güçlü bullet kamera.</p>
             </div>
             <div class="product-card card-item" data-product="nvr_dvr">
-                <img src="https://images.unsplash.com/photo-1621570183296-6e2c39869500?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kayıt Cihazı">
+                 <img src="https://images.unsplash.com/photo-1621570183296-6e2c39869500?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kayıt Cihazı">
                 <h3 data-key="nvr_dvr_name">NVR/DVR Kayıt Cihazı</h3>
                 <p data-key="nvr_dvr_desc">Güvenlik kameralarından gelen görüntüleri depolamak için kayıt cihazları.</p>
             </div>
@@ -478,7 +501,7 @@
         </div>
     </section>
 
-    <section id="why-us" class="section">
+    <section id="why-us" class="section" style="background-color: #fff;">
         <h2 data-key="why_us_heading">Niyə Bizi Seçməlisiniz?</h2>
         <div class="reason-grid">
             <div class="reason-item card-item">
@@ -505,7 +528,7 @@
     </section>
 
     <section id="contact" class="section contact-section">
-        <h2 data-key="contact_heading">Əlaqə və Yerləşmə</h2>
+        <h2 data-key="contact_heading" style="color: white; border-color: var(--accent-color);">Əlaqə və Yerləşmə</h2>
         <div class="contact-info">
             <p data-key="contact_phone1_label">Telefon 1 (Mobil/WhatsApp): <span class="contact-link">0707 39 32 30</span></p>
             <p data-key="contact_phone2_label">Telefon 2 (Sabit/Alternatif): <span class="contact-link">051 737 10 76</span></p>
@@ -552,10 +575,10 @@
         document.getElementById('map-link-btn').href = mapLink;
         document.getElementById('map-link-icon').href = mapLink;
 
-        // 1. DİL ÇEVİRİLERİ (İSİM VE NİYƏ BİZ DÜZELTMELERİ YAPILDI)
+        // 1. DİL ÇEVİRİLERİ 
         const translations = {
             'az': {
-                'logo_text': 'Hərtərəfli Texniki Servis',
+                'logo_text': 'Namık Servis',
                 'title': 'Hərtərəfli Texniki Servis və Peyk Sistemləri | Namiq Services',
                 'nav_home_mobile': 'ANA SƏHİFƏ',
                 'nav_satellite_mobile': 'PEYK SİSTEMLƏRİ',
@@ -616,7 +639,7 @@
                 'dev_img3_name': 'Masaüstü Kompüter',
                 'dev_img3_desc': 'Sistem yığımı və əməliyyat sistemi quraşdırılması xidmətləri.',
 
-                'why_us_heading': 'NİYƏ BİZ?', // Düzeltildi
+                'why_us_heading': 'NİYƏ BİZ?',
                 'reason1_title': 'Təcrübə və Peşəkarlıq',
                 'reason1_desc': 'Uzun illərdir bu sahədəyik və ən çətin problemləri həll edirik.',
                 'reason2_title': 'Sürətli Xidmət',
@@ -635,7 +658,7 @@
                 'footer_text': '© 2025 Namiq Texniki Servis. Bütün hüquqlar qorunur.'
             },
             'tr': {
-                'logo_text': 'Kapsamlı Teknik Servis',
+                'logo_text': 'Namık Servis',
                 'title': 'Kapsamlı Teknik Servis ve Uydu Sistemleri | Namık Services',
                 'nav_home_mobile': 'ANASAYFA',
                 'nav_satellite_mobile': 'UYDU SİSTEMLERİ',
@@ -714,7 +737,7 @@
                 'footer_text': '© 2025 Namık Teknik Servis. Tüm Hakları Saklıdır.'
             },
             'en': {
-                'logo_text': 'Comprehensive Technical Service',
+                'logo_text': 'Namig Service',
                 'title': 'Comprehensive Technical Service and Satellite Systems | Namig Services',
                 'nav_home_mobile': 'HOME',
                 'nav_satellite_mobile': 'SATELLITE SYSTEMS',
@@ -806,7 +829,7 @@
             document.documentElement.lang = lang;
         }
 
-        // 2. GALERİ VERİLERİ (UYDU ÜRÜNLERİ İÇİN KULLANILIR)
+        // 2. GALERİ VERİLERİ 
         const productImages = {
             'single_lnb': [
                 "https://api-rayashop.freetls.fastly.net/media/catalog/product/cache/4e49ac3a70c0b98a165f3fa6633ffee1/k/i/kilz6s6_-_imgur.jpg?format=webp&width=700",
@@ -819,7 +842,6 @@
             'diseqc': [
                 "https://strgimgr.umico.az/img/product/840/f2b080ec-f990-44a8-9c33-2bc53b996c4d.jpeg" 
             ],
-            // Yeni kamera ve cihaz görselleri için galeriye gerek olmadığı varsayıldı
         };
 
         // 3. GALERİ MODAL VE SLAYT İŞLEVLERİ (Aynen kaldı)
